@@ -156,3 +156,25 @@ func TestNoMXDomain(t *testing.T) {
 	}
 
 }
+
+func TestDomainNotInAllowedList(t *testing.T) {
+	allowedlist := rules.NewErrDomainNotInAllowedList([]string{`localhost`})
+	validator := New([]rules.Validator{allowedlist})
+	errs := validator.Validate(`user@example.org`)
+
+	if len(errs) != 1 {
+		t.Fail()
+	}
+
+	eCount := 0
+
+	for _, e := range errs {
+		if errors.Is(e, e.(*rules.ErrDomainNotInAllowedList)) {
+			eCount++
+		}
+	}
+
+	if eCount != 1 {
+		t.Fail()
+	}
+}
