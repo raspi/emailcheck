@@ -1,7 +1,3 @@
-# emailcheck
-Validate email address. Doesn't use regular expression(s).
-
-```go
 package main
 
 import (
@@ -23,4 +19,3 @@ func main() {
 		fmt.Printf("invalid email: %v", err)
 	}
 }
-```
