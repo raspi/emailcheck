@@ -1,7 +1,7 @@
 package emailcheck
 
 import (
-	"./rules"
+	"github.com/raspi/emailcheck/rules"
 )
 
 type EmailValidator struct {

@@ -1,8 +1,8 @@
 package emailcheck
 
 import (
-	"./rules"
 	"errors"
+	"github.com/raspi/emailcheck/rules"
 	"testing"
 )
 
