@@ -17,6 +17,7 @@ func (e *ErrNoDomainMXRecords) Error() string {
 
 func (e *ErrNoDomainMXRecords) Unwrap() error { return e.Err }
 
+// Validate checks that given email address domain has DNS MX (mail transfer) record(s)
 func (e ErrNoDomainMXRecords) Validate(email string) (errs []error) {
 	if strings.Count(email, `@`) != 1 {
 		return append(errs, &ErrNoAt{})
