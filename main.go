@@ -5,11 +5,11 @@ import (
 )
 
 type EmailValidator struct {
-	Rules []rules.Validator
+	rules []rules.Validator
 }
 
 func (ev EmailValidator) Validate(email string) (errs []error) {
-	for _, r := range ev.Rules {
+	for _, r := range ev.rules {
 		errs = append(errs, r.Validate(email)...)
 	}
 
@@ -18,6 +18,6 @@ func (ev EmailValidator) Validate(email string) (errs []error) {
 
 func New(rules []rules.Validator) EmailValidator {
 	return EmailValidator{
-		Rules: rules,
+		rules: rules,
 	}
 }
