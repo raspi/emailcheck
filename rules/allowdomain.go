@@ -22,7 +22,7 @@ func NewErrDomainNotInAllowedList(allowed []string) ErrDomainNotInAllowedList {
 }
 
 func (e *ErrDomainNotInAllowedList) Error() string {
-	return fmt.Sprintf(`domain %v has no MX records`, e.Domain)
+	return fmt.Sprintf(`domain %q is not listed on allowed domains list`, e.Domain)
 }
 
 // Validate checks that given email address domain is on allow list
