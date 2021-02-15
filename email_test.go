@@ -178,3 +178,25 @@ func TestDomainNotInAllowedList(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestDomainInDeniedList(t *testing.T) {
+	deniedlist := rules.NewErrDomainInDeniedList([]string{`localhost`})
+	validator := New([]rules.Validator{deniedlist})
+	errs := validator.Validate(`user@localhost`)
+
+	if len(errs) != 1 {
+		t.Fail()
+	}
+
+	eCount := 0
+
+	for _, e := range errs {
+		if errors.Is(e, e.(*rules.ErrDomainInDeniedList)) {
+			eCount++
+		}
+	}
+
+	if eCount != 1 {
+		t.Fail()
+	}
+}
