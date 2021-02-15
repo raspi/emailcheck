@@ -8,7 +8,7 @@ import (
 type ErrDomainNotInAllowedList struct {
 	Domain         string
 	Err            error
-	allowedDomains []string
+	allowedDomains []string // list of allowed domains
 }
 
 func NewErrDomainNotInAllowedList(allowed []string) ErrDomainNotInAllowedList {
