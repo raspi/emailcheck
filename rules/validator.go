@@ -10,6 +10,5 @@ var DefaultRules = []Validator{
 	ErrNoAt{},
 	ErrNoUser{},
 	ErrHasSpaces{},
-	ErrNoDotAfterAt{},
 	ErrNoDomainMXRecords{},
 }
